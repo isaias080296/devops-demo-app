@@ -1,22 +1,23 @@
-pipeline{
+pipeline {
+  agent {
+    docker {
+      image 'phpunit/phpunit'
+    }
 
-    agent { 
-    
-      docker{
-        image 'phpunit/phpunit'
+  }
+  stages {
+    stage('unit test') {
+      steps {
+        echo 'this is the first job'
+        sh 'phpunit --version'
       }
-
-    }
-    
-    
-    stages{
-        stage('unit test'){
-            steps{
-                echo 'this is the first job'
-                sh 'phpunit --version'
-            }
-        }
     }
 
- 
+    stage('sleep') {
+      steps {
+        sleep 4
+      }
+    }
+
+  }
 }
