@@ -1,10 +1,14 @@
 pipeline{
 
-    agent docker{
-      image 'phpunit/phpunit'
+    agent { 
+    
+      docker{
+        image 'phpunit/phpunit'
+      }
+
     }
-
-
+    
+    
     stages{
         stage('unit test'){
             steps{
